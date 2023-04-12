@@ -53,7 +53,7 @@ jobs:
         ASPNETCORE_ENVIRONMENT: Production
         
     - name: Start webapp Service
-      uses: garygrossgarten/github-action-ssh@v0.7
+      uses: garygrossgarten/github-action-scp@release
       with:
         command: service webapp start
         host: ${{ secrets.REMOTE_HOST }}
