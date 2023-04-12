@@ -31,7 +31,7 @@ jobs:
       run: dotnet publish -c Release
       
     - name: Stop webapp Service
-      uses: garygrossgarten/github-action-ssh@v0.6.3
+      uses: garygrossgarten/github-action-ssh@v7.0
       with:
         command: service webapp stop
         host: ${{ secrets.REMOTE_HOST }}
@@ -40,7 +40,7 @@ jobs:
         privateKey: ${{ secrets.REMOTE_SSH_KEY }}
       
     - name: Copy to Server via SCP
-      uses: garygrossgarten/github-action-scp@v0.6.3
+      uses: garygrossgarten/github-action-scp@v7.0
       with:
         local: /home/runner/work/DemoApp/DemoApp/DemoApp/bin/Release/net7.0/publish/
         concurrency: 10
