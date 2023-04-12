@@ -30,26 +30,22 @@ jobs:
     - name: DotNet Publish
       run: dotnet publish -c Release
       
-    - name: Stop webapp Service
+    - name: Stop ServiceName Service
       uses: garygrossgarten/github-action-ssh@v0.6.3
       with:
-        command: service webapp stop
+        command: service ServiceName stop
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         passphrase: ${{ secrets.PASSPHRASE }}
         privateKey: ${{ secrets.REMOTE_SSH_KEY }}
       
     - name: Copy to Server via SCP
-      uses: garygrossgarten/github-action-scp@v0.6.3
+      uses: garygrossgarten/github-action-scp@release
       with:
-        local: /home/runner/work/DemoApp/DemoApp/DemoApp/bin/Release/net7.0/publish/
+        local: /home/runner/work/DemoApp/DemoApp/DemoApp/bin/Release/net5.0/publish/
         concurrency: 10
         remote: ${{ secrets.REMOTE_TARGET }}
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         passphrase: ${{ secrets.PASSPHRASE }}
         privateKey: ${{ secrets.REMOTE_SSH_KEY }}
-      env:
-        ASPNETCORE_ENVIRONMENT: Production
-        
- 
