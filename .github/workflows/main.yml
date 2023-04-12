@@ -34,7 +34,7 @@ jobs:
     - name: Copy to Server via SCP
       uses: garygrossgarten/github-action-scp@release
       with:
-        D: \Github\Repo2\bin\Debug\net7.0
+        local: \Github\Repo2\bin\Debug\net7.0
         concurrency: 10
         remote: ${{ secrets.REMOTE_TARGET }}
         host: ${{ secrets.REMOTE_HOST }}
