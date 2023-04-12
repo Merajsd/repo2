@@ -40,7 +40,7 @@ jobs:
         privateKey: ${{ secrets.REMOTE_SSH_KEY }}
       
     - name: Copy to Server via SCP
-      uses: garygrossgarten/github-action-scp@release
+      uses: garygrossgarten/github-action-scp@v0.6.3
       with:
         local: /home/runner/work/DemoApp/DemoApp/DemoApp/bin/Release/net7.0/publish/
         concurrency: 10
@@ -53,7 +53,7 @@ jobs:
         ASPNETCORE_ENVIRONMENT: Production
         
     - name: Start webapp Service
-      uses: garygrossgarten/github-action-scp@release
+      uses: garygrossgarten/github-action-ssh@v0.6.3
       with:
         command: service webapp start
         host: ${{ secrets.REMOTE_HOST }}
