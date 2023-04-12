@@ -30,10 +30,10 @@ jobs:
     - name: DotNet Publish
       run: dotnet publish -c Release
       
-    - name: Stop ServiceName Service
+    - name: Stop webapp Service
       uses: garygrossgarten/github-action-ssh@v0.6.3
       with:
-        command: service ServiceName stop
+        command: service webapp stop
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         passphrase: ${{ secrets.PASSPHRASE }}
