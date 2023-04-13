@@ -42,6 +42,6 @@ jobs:
       run: |
           aws deploy create-deployment \
             --application-name app \
-            --deployment-group-name dd \
+            --deployment-group-name gitflow \
             --deployment-config-name CodeDeployDefault.OneAtATime \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
